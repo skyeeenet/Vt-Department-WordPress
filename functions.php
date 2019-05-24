@@ -3,6 +3,7 @@
 require get_template_directory() . '/includes/theme-settings.php';
 require get_template_directory() . '/includes/widget-areas.php';
 require get_template_directory() . '/includes/enqueue-script-style.php';
+require get_template_directory() . '/includes/post-types.php';
 
 function vtdep_content_width() {
 
@@ -10,13 +11,13 @@ function vtdep_content_width() {
 }
 add_action( 'after_setup_theme', 'vtdep_content_width', 0 );
 
-require get_template_directory() . '/includes/custom-header.php';
+//require get_template_directory() . '/includes/custom-header.php';
 
-require get_template_directory() . '/includes/template-tags.php';
+//require get_template_directory() . '/includes/template-tags.php';
 
-require get_template_directory() . '/includes/template-functions.php';
+//require get_template_directory() . '/includes/template-functions.php';
 
-require get_template_directory() . '/includes/customizer.php';
+//require get_template_directory() . '/includes/customizer.php';
 
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/includes/jetpack.php';

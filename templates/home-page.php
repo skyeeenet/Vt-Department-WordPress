@@ -9,18 +9,7 @@ Template Name: Главная страница
         <div class="container mt-3">
             <div class="row">
                 <div class="col-lg-8 slck vit_index">
-                    <div class="sliderBLock card">
-                        <div class="d-flex flex-column justify-content-center align-items-center ">
-                        </div>
-                    </div>
-                    <div class="sliderBLock card">
-                        <div class="d-flex flex-column justify-content-center align-items-center ">
-                        </div>
-                    </div>
-                    <div class="sliderBLock card">
-                        <div class="d-flex flex-column justify-content-center align-items-center ">
-                        </div>
-                    </div>
+                    <?php echo do_shortcode('[metaslider id="12"]'); ?>
                 </div>
                 <!-- /.col-lg-8 -->
                 <div class="col-lg-4 declaration">
@@ -28,12 +17,18 @@ Template Name: Главная страница
                         Объявления
                     </div>
                     <div class="d-flex flex-column justify-content-center align-items-center declaration-text">
-                        <p class="roboto16lt"> <a href="#">Недавние события повлекли за собой массу протестов1</a></p>
-                        <p class="roboto16lt"> <a href="#">Недавние события повлекли за собой массу протестов2</a></p>
-                        <p class="roboto16lt"> <a href="#">Недавние события повлекли за собой массу протестов3</a></p>
+                        <?php
+                        $args = array(
+                            'post_type' => 'adverts',
+                            'posts_per_page' => 3,
+                        );
+                        $loop = new WP_Query($args);
+                        while ($loop->have_posts()) : $loop->the_post(); ?>
+                        <p class="roboto16lt"> <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+                        <?php endwhile; wp_reset_query(); ?>
                     </div>
                     <div class="d-flex justify-content-end">
-                        <a class="link roboto16" href="#">Все объявления</a>
+                        <a class="link roboto16" href="<?php echo get_post_type_archive_link( 'adverts' ); ?>">Все объявления</a>
                     </div>
                 </div>
                 <!-- /.col-lg-4 -->
