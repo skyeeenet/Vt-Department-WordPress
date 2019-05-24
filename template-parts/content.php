@@ -22,8 +22,7 @@
 			?>
 			<div class="entry-meta">
 				<?php
-				vtdep_posted_on();
-				vtdep_posted_by();
+
 				?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>

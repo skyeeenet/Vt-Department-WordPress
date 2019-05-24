@@ -32,7 +32,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 @font-face {
 	font-family: 'Gotham-Pro-Light';
-	src: url("../../fonts/GothamPro-Light.ttf") format("truetype");
+	src: url("assets/fonts/GothamPro-Light.ttf") format("truetype");
 }
 
 * {

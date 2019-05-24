@@ -9,10 +9,6 @@ if ( ! function_exists( 'vtdep_setup' ) ) :
 
         add_theme_support( 'post-thumbnails' );
 
-        register_nav_menus( array(
-            'menu-1' => esc_html__( 'Primary', 'vtdep' ),
-        ) );
-
         register_nav_menu('top', 'Header-menu');
 
         add_theme_support( 'html5', array(

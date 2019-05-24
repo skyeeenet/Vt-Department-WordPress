@@ -40,7 +40,7 @@ Template Name: Главная страница
     <section>
         <div class="container mt-5">
             <div class="w-100 d-flex flex-column align-items-center margin-bottom">
-                <a href="#">
+                <a href="<?php echo get_post_type_archive_link('news'); ?>">
                     <h2 class="title link">Недавние новости и события</h2>
                 </a>
                 <div class="d-flex flex-row justify-content-center specDoubledColorLine mt-2">
@@ -49,90 +49,24 @@ Template Name: Главная страница
                 </div>
             </div>
             <div class="row">
+                <?php
+                $args = array(
+                        'post_type' => 'news',
+                    'posts_per_page' => 6,
+                );
+                $loop = new WP_Query($args);
+                while ($loop->have_posts()) : $loop->the_post(); ?>
                 <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
                     <div class="card">
-                        <div style="background-image: url('./images/photo.png');" class="card-image-container"></div>
+                        <div style="background-image: url('<?php the_post_thumbnail_url(); ?>');" class="card-image-container"></div>
                         <div class="card-body">
-                            <small class="roboto14">2019-03-02 21:17:17</small>
-                            <h5 class="mt-3"><a class="roboto22md color_cont" href="#">Заголовок новости</a></h5>
-                            <p class="roboto16lt second-text mt-4">
-                                Краткое описание новости свозможностью
-                                перехода на страницус более детальным
-                                описанием...
-                            </p>
+                            <small class="roboto14"><?php the_time("d M Y"); ?></small>
+                            <h5 class="mt-3"><a class="roboto22md color_cont" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                            <p class="roboto16lt second-text mt-4"><?php the_content(); ?></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
-                    <div class="card">
-                        <div style="background-image: url('./images/photo.png');" class="card-image-container"></div>
-                        <div class="card-body">
-                            <small class="roboto14">2019-03-02 21:17:17</small>
-                            <h5 class="mt-3"><a class="roboto22md color_cont" href="#">Заголовок новости</a></h5>
-                            <p class="roboto16lt second-text mt-4">
-                                Краткое описание новости свозможностью
-                                перехода на страницус более детальным
-                                описанием...
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
-                    <div class="card">
-                        <div style="background-image: url('./images/photo.png');" class="card-image-container"></div>
-                        <div class="card-body">
-                            <small class="roboto14">2019-03-02 21:17:17</small>
-                            <h5 class="mt-3"><a class="roboto22md color_cont" href="#">Заголовок новости</a></h5>
-                            <p class="roboto16lt second-text mt-4">
-                                Краткое описание новости свозможностью
-                                перехода на страницус более детальным
-                                описанием...
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
-                    <div class="card">
-                        <div style="background-image: url('./images/photo.png');" class="card-image-container"></div>
-                        <div class="card-body">
-                            <small class="roboto14">2019-03-02 21:17:17</small>
-                            <h5 class="mt-3"><a class="roboto22md color_cont" href="#">Заголовок новости</a></h5>
-                            <p class="roboto16lt second-text mt-4">
-                                Краткое описание новости свозможностью
-                                перехода на страницус более детальным
-                                описанием...
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
-                    <div class="card">
-                        <div style="background-image: url('./images/photo.png');" class="card-image-container"></div>
-                        <div class="card-body">
-                            <small class="roboto14">2019-03-02 21:17:17</small>
-                            <h5 class="mt-3"><a class="roboto22md color_cont" href="#">Заголовок новости</a></h5>
-                            <p class="roboto16lt second-text mt-4">
-                                Краткое описание новости свозможностью
-                                перехода на страницус более детальным
-                                описанием...
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
-                    <div class="card">
-                        <div style="background-image: url('./images/photo.png');" class="card-image-container"></div>
-                        <div class="card-body">
-                            <small class="roboto14">2019-03-02 21:17:17</small>
-                            <h5 class="mt-3"><a class="roboto22md color_cont" href="#">Заголовок новости</a></h5>
-                            <p class="roboto16lt second-text mt-4">
-                                Краткое описание новости свозможностью
-                                перехода на страницус более детальным
-                                описанием...
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <?php endwhile; wp_reset_query(); ?>
             </div>
         </div>
     </section>
@@ -148,84 +82,31 @@ Template Name: Главная страница
             </div>
 
             <div class="row">
+                <?php
+                remove_filter('the_content', 'wpautop');
+                $args = array(
+                    'post_type' => 'info-blocks',
+                    'posts_per_page' => 6,
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'Type',
+                            'field' => 'slug',
+                            'terms' => 'Advantages'
+                        )
+                    )
+                );
+                $loop = new WP_Query($args);
+                while ($loop->have_posts()) : $loop->the_post(); ?>
                 <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt-5 mt-sm-5 mt-md-0 mt-lg-4">
                     <div class="adv-item d-flex flex-column align-items-center">
-                        <img class="pt-3" src="./images/service-1.png" alt="">
+                        <img class="pt-3" src="<?php the_post_thumbnail_url(); ?>" alt="">
                         <div class="p-3">
-                            <h2 class="roboto22md t-transf-cap text-center">Заголовок номер 1</h2>
-                            <p class="roboto16 pt-2 text-center">
-                                Описание преимущества описание
-                                преимущества описание преисущества
-                                описание преимущества
-                            </p>
+                            <h2 class="roboto22md t-transf-cap text-center"><?php the_title(); ?></h2>
+                            <p class="roboto16 pt-2 text-center"><?php the_content(); ?></p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt-5 mt-sm-5 mt-md-0 mt-lg-4">
-                    <div class="adv-item d-flex flex-column align-items-center">
-                        <img class="pt-3" src="./images/service-1.png" alt="">
-                        <div class="p-3">
-                            <h2 class="roboto22md t-transf-cap text-center">Заголовок номер 1</h2>
-                            <p class="roboto16 pt-2 text-center">
-                                Описание преимущества описание
-                                преимущества описание преисущества
-                                описание преимущества
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt-md-5 mt-sm-5 mt-5 mt-lg-4">
-                    <div class="adv-item d-flex flex-column align-items-center">
-                        <img class="pt-3" src="./images/service-1.png" alt="">
-                        <div class="p-3">
-                            <h2 class="roboto22md t-transf-cap text-center">Заголовок номер 1</h2>
-                            <p class="roboto16 pt-2 text-center">
-                                Описание преимущества описание
-                                преимущества описание преисущества
-                                описание преимущества
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt-md-5 mt-sm-5 mt-5 mt-lg-4">
-                    <div class="adv-item d-flex flex-column align-items-center">
-                        <img class="pt-3" src="./images/service-1.png" alt="">
-                        <div class="p-3">
-                            <h2 class="roboto22md t-transf-cap text-center">Заголовок номер 1</h2>
-                            <p class="roboto16 pt-2 text-center">
-                                Описание преимущества описание
-                                преимущества описание преисущества
-                                описание преимущества
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt-md-5 mt-sm-5 mt-5 mt-lg-4">
-                    <div class="adv-item d-flex flex-column align-items-center">
-                        <img class="pt-3" src="./images/service-1.png" alt="">
-                        <div class="p-3">
-                            <h2 class="roboto22md t-transf-cap text-center">Заголовок номер 1</h2>
-                            <p class="roboto16 pt-2 text-center">
-                                Описание преимущества описание
-                                преимущества описание преисущества
-                                описание преимущества
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt-md-5 mt-sm-5 mt-5 mt-lg-4">
-                    <div class="adv-item d-flex flex-column align-items-center">
-                        <img class="pt-3" src="./images/service-1.png" alt="">
-                        <div class="p-3">
-                            <h2 class="roboto22md t-transf-cap text-center">Заголовок номер 1</h2>
-                            <p class="roboto16 pt-2 text-center">
-                                Описание преимущества описание
-                                преимущества описание преисущества
-                                описание преимущества
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <?php endwhile; wp_reset_query(); ?>
             </div>
         </div>
     </section>
@@ -239,34 +120,21 @@ Template Name: Главная страница
         </div>
         <div class="container mt-5">
             <div id="thebest">
+                <?php
+                $args = array(
+                    'post_type' => 'best-students',
+                    'posts_per_page' => 0,
+                );
+                $loop = new WP_Query($args);
+                while ($loop->have_posts()) : $loop->the_post(); ?>
                 <div class="thebest-container pt-5 pb-5">
-                    <img src="images/best.jpeg" alt="">
-                    <a class="d-block mt-3" href="">
-                        <h3>Иванов Иван</h3>
+                    <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php echo get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true); ?>">
+                    <a class="d-block mt-3" href="<?php the_permalink(); ?>">
+                        <h3><?php the_title(); ?></h3>
                     </a>
-                    <p>Lorem ipsum dolor sit amet.</p>
+                    <p><?php the_field('short_description'); ?></p>
                 </div>
-                <div class="thebest-container pt-5 pb-5">
-                    <img src="images/best.jpeg" alt="">
-                    <a class="d-block mt-3" href="">
-                        <h3>Иванов Иван</h3>
-                    </a>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="thebest-container pt-5 pb-5">
-                    <img src="images/best.jpeg" alt="">
-                    <a class="d-block mt-3" href="">
-                        <h3>Иванов Иван</h3>
-                    </a>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="thebest-container pt-5 pb-5">
-                    <img src="images/best.jpeg" alt="">
-                    <a class="d-block mt-3" href="">
-                        <h3>Иванов Иван</h3>
-                    </a>
-                    <p>Lorem ipsum dolor sit amet.</p>
-                </div>
+                <?php endwhile; wp_reset_query(); ?>
             </div>
         </div>
     </section>
