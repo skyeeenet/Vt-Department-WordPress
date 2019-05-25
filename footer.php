@@ -9,7 +9,11 @@
                 <div class="col-lg-4 d-flex justify-content-center">
                     <div class="nav w-100 flex-column align-items-center">
                         <p class="vit_foot_main_text p-0">Разработчики</p>
-                        <a href="#">TrueCode</a>
+                        <a href="https://www.linkedin.com/in/sergei-tilinin-b4289417b">Тилинин Сергей</a>
+                        <a href="">Клычков Виталий</a>
+                        <a href="">Симон Николай</a>
+                        <a href="">Крутиков Владислав</a>
+                        <a href="">Григорьев Владимир</a>
                     </div>
                 </div>
                 <div class="col-lg-4 mt-3 mt-lg-0 d-flex justify-content-center">
@@ -29,7 +33,7 @@
         </div>
         <div class="text-center pt-4 pb-3 text-secondary roboto16">
             Copyright &copy; 2019 All rights reserved. Developed by <a
-                    href="https://github.com/devitvt">DevItVt</a>
+                    href="https://github.com/devitvt">TrueCode</a>
         </div>
     </div>
 </footer>

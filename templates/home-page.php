@@ -38,7 +38,7 @@ Template Name: Главная страница
         <!-- /.container.mt-3.mb-3 -->
     </section>
     <section>
-        <div class="container mt-5">
+        <div class="container mt-2">
             <div class="w-100 d-flex flex-column align-items-center margin-bottom">
                 <a href="<?php echo get_post_type_archive_link('news'); ?>">
                     <h2 class="title link">Недавние новости и события</h2>
@@ -62,7 +62,7 @@ Template Name: Главная страница
                         <div class="card-body">
                             <small class="roboto14"><?php the_time("d M Y"); ?></small>
                             <h5 class="mt-3"><a class="roboto22md color_cont" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-                            <p class="roboto16lt second-text mt-4"><?php the_content(); ?></p>
+                            <p class="roboto16lt second-text mt-4"><?php the_field('preview'); ?></p>
                         </div>
                     </div>
                 </div>

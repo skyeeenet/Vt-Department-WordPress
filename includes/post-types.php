@@ -19,7 +19,7 @@ add_action('init', function() {
         ],
         'description' => '',
         'public' => true,
-        'menu_position' => 25,
+        'menu_position' => 30,
         'menu_icon' => 'dashicons-format-quote',
         'hierarchical' => false,
         'supports' => array('title', 'editor'),

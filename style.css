@@ -455,6 +455,29 @@ div.currentWeek div:last-child {
 	text-transform: uppercase;
 }
 
+/***********PAGINATION************/
+.pagination .nav-links {
+	display: flex;
+	font-family: "Roboto", sans-serif;
+}
+
+.pagination .nav-links a, .nav-links span {
+	display: block;
+	padding: 10px 15px;
+	text-decoration: none;
+	transition: .1s ease-in-out;
+	color: #0d0b0b;
+}
+
+.pagination .nav-links a:hover {
+	background-color: #efefef;
+	transition: .1s ease-in-out;
+}
+
+.pagination .nav-links .current {
+	background-color: #efefef;
+}
+
 div.contactsTopHeader {
 	font-family: "Roboto", sans-serif;
 	font-size: 14px;
@@ -1132,36 +1155,6 @@ img {
 
 .avatar {
 	max-width: 360px;
-}
-
-.prev {
-	display: inline-block;
-	position: absolute;
-	right: 0;
-	bottom: 50%;
-	z-index: 999999;
-}
-
-.next {
-	display: inline-block;
-	position: absolute;
-	left: 0;
-	bottom: 50%;
-	z-index: 999999;
-}
-
-.next, .prev {
-	width: 30px;
-	height: 30px;
-	border: none;
-	border-radius: 50%;
-	background-color: transparent;
-	outline: none;
-}
-
-.next, .prev i {
-	color: #d1d1d1;
-	font-size: 30px;
 }
 
 .schedule-border div div:last-child p {
