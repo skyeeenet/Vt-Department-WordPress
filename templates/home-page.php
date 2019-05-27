@@ -62,7 +62,7 @@ Template Name: Главная страница
                         <div class="card-body">
                             <small class="roboto14"><?php the_time("d M Y"); ?></small>
                             <h5 class="mt-3"><a class="roboto22md color_cont" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-                            <p class="roboto16lt second-text mt-4"><?php the_field('preview'); ?></p>
+                            <p class="roboto16lt second-text mt-4">Preview</p>
                         </div>
                     </div>
                 </div>
@@ -82,31 +82,19 @@ Template Name: Главная страница
             </div>
 
             <div class="row">
-                <?php
-                remove_filter('the_content', 'wpautop');
-                $args = array(
-                    'post_type' => 'info-blocks',
-                    'posts_per_page' => 6,
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'Type',
-                            'field' => 'slug',
-                            'terms' => 'Advantages'
-                        )
-                    )
-                );
-                $loop = new WP_Query($args);
-                while ($loop->have_posts()) : $loop->the_post(); ?>
+                <?php $advantages = carbon_get_post_meta($post->ID, 'el_home_advantages'); ?>
+
+                <?php foreach ($advantages as $item): ?>
                 <div class="col-lg-4 col-md-6 col-sm-12 col-12 mt-5 mt-sm-5 mt-md-0 mt-lg-4">
                     <div class="adv-item d-flex flex-column align-items-center">
-                        <img class="pt-3" src="<?php the_post_thumbnail_url(); ?>" alt="">
+                        <img class="pt-3" src="<?php echo $item['photo']; ?>" alt="Преимущество обучения на кафедре информатики ВТ">
                         <div class="p-3">
-                            <h2 class="roboto22md t-transf-cap text-center"><?php the_title(); ?></h2>
-                            <p class="roboto16 pt-2 text-center"><?php the_content(); ?></p>
+                            <h2 class="roboto22md t-transf-cap text-center"><?php echo $item['title']; ?></h2>
+                            <p class="roboto16 pt-2 text-center"><?php echo $item['description']; ?></p>
                         </div>
                     </div>
                 </div>
-                <?php endwhile; wp_reset_query(); ?>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -132,7 +120,7 @@ Template Name: Главная страница
                     <a class="d-block mt-3" href="<?php the_permalink(); ?>">
                         <h3><?php the_title(); ?></h3>
                     </a>
-                    <p><?php the_field('short_description'); ?></p>
+                    <p>SHORT DESCRIPTION</p>
                 </div>
                 <?php endwhile; wp_reset_query(); ?>
             </div>

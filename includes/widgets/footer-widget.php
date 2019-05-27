@@ -18,9 +18,9 @@ class Widget_Footer extends WP_Widget {
         $email = apply_filters( 'widget_email', $instance['email'] );
 
         if (! empty($address))
-            echo '<div class="mt-md-0 mt-md-0 "><img src="'.get_template_directory_uri().'/assets/images/placeholder.svg" height="20px" width="20px" alt="City"><span class="pl-2 color_cont">'.$address.'</span></div>';
+            echo '';
         if (! empty($email))
-            echo '<div class="pt-2 mt-md-0"><img src="'.get_template_directory_uri().'/assets/images/email.svg" height="20px" width="20px" alt="Mail"><span class="pl-2 color_cont">'.$email.'</span></div>';
+            echo '';
 
     }
 

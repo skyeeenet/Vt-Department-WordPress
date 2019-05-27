@@ -31,3 +31,15 @@ if ( ! function_exists( 'vtdep_setup' ) ) :
     }
 endif;
 add_action( 'after_setup_theme', 'vtdep_setup' );
+
+function vtdep_content_width() {
+
+    $GLOBALS['content_width'] = apply_filters( 'vtdep_content_width', 640 );
+}
+add_action( 'after_setup_theme', 'vtdep_content_width', 0 );
+
+add_action( 'after_switch_theme', 'bt_flush_rewrite_rules' );
+
+function bt_flush_rewrite_rules() {
+    flush_rewrite_rules();
+}

@@ -1,9 +1,6 @@
-<?php
-$custom_logo__url = wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'full')[0];
-?>
 <!doctype html>
 <html>
-
+<html <?php language_attributes(); ?>>
 <head>
     <!-- Required meta tags -->
     <meta charset="<?php bloginfo('charset'); ?>">
@@ -22,9 +19,8 @@ $custom_logo__url = wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'f
                 </div>
                 <!-- /.currentWeek -->
                 <div class="d-flex flex-column flex-md-row justify-content-around align-items-start align-items-md-center contactsTopHeader">
-                    <?php if (is_active_sidebar('header_sidebar')) : ?>
-                        <?php dynamic_sidebar('header_sidebar'); ?>
-                    <?php endif; ?>
+                    <div class="mt-md-0 mt-md-0 ml-3"><img src="<?php echo get_template_directory_uri().'/assets/images/placeholder.svg' ?>" heigth="20px"width="20px" alt="Address"><span class="pl-2"><?php echo carbon_get_theme_option('el_address') ?></span></div>
+                    <div class="mt-2 mt-md-0 ml-3"><img src="<?php echo get_template_directory_uri(). '/assets/images/email.svg'; ?>" heigth="20px" width="20px" alt="Email"><span class="pl-2"><?php echo carbon_get_theme_option('el_email') ?></span></div>
                 </div>
                 <!-- /.contactsTopHeader -->
             </div>
@@ -35,8 +31,8 @@ $custom_logo__url = wp_get_attachment_image_src(get_theme_mod('custom_logo'), 'f
             <div class="wrap-inner clearfix">
                 <div id="site-logo" class="clearfix">
                     <div id="site-log-inner">
-                        <a href="home.html" rel="home" class="main-logo">
-                            <img src="<?php echo $custom_logo__url; ?>" alt="Autora" width="80">
+                        <a href="/" rel="home" class="main-logo">
+                            <img src="<?php echo wp_get_attachment_image_url(carbon_get_theme_option('el_header_logo')); ?>" alt="Логотип сайта кафедры ВТ" width="80">
                         </a>
                     </div>
                 </div><!-- /#site-logo -->

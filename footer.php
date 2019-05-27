@@ -15,13 +15,13 @@
                         <a href="">Крутиков Владислав</a>
                         <a href="">Григорьев Владимир</a>
                     </div>
+                    <small id="week_offset" style="display: none;"><?php echo carbon_get_theme_option('el_week') ?></small>
                 </div>
                 <div class="col-lg-4 mt-3 mt-lg-0 d-flex justify-content-center">
                     <div class="nav w-100 flex-column align-items-center">
                         <p class="vit_foot_main_text text-center">Контакты</p>
-                        <?php if (is_active_sidebar('footer_sidebar')) : ?>
-                            <?php dynamic_sidebar('footer_sidebar'); ?>
-                        <?php endif; ?>
+                        <div class="mt-md-0 mt-md-0 "><img src="<?php echo get_template_directory_uri().'/assets/images/placeholder.svg'; ?>" height="20px" width="20px" alt="City"><span class="pl-2 color_cont"><?php echo carbon_get_theme_option('el_address') ?></span></div>
+                        <div class="pt-2 mt-md-0"><img src="<?php echo get_template_directory_uri().'/assets/images/email.svg'; ?>" height="20px" width="20px" alt="Mail"><span class="pl-2 color_cont"><?php echo carbon_get_theme_option('el_email') ?></span></div>
                         <div class="mt-md-0 mt-md-0 pt-2"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/support.svg" height="20px" width="20px" alt="Support"><a href=""><span class="pl-2 color_cont">Обратная связь</span></a></div>
                     </div>
                 </div>
@@ -32,8 +32,8 @@
 
         </div>
         <div class="text-center pt-4 pb-3 text-secondary roboto16">
-            Copyright &copy; 2019 All rights reserved. Developed by <a
-                    href="https://github.com/devitvt">TrueCode</a>
+            <?php echo carbon_get_theme_option('el_footer_rights') ?> <a
+                    href="<?php echo carbon_get_theme_option('el_footer_team_url') ?>"><?php echo carbon_get_theme_option('el_footer_team') ?></a>
         </div>
     </div>
 </footer>

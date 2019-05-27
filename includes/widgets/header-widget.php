@@ -19,10 +19,9 @@ class Widget_Header extends WP_Widget {
         $email = apply_filters( 'widget_email', $instance['email'] );
 
         if (! empty($address))
-            echo '<div class="mt-md-0 mt-md-0 ml-3"><img src="'.get_template_directory_uri().'/assets/images/placeholder.svg" heigth="20px"width="20px" alt="position"><span class="pl-2">'.$address.'</span></div>';
+            echo '';
         if (! empty($email))
-            echo '<div class="mt-2 mt-md-0 ml-3"><img src="'.get_template_directory_uri().'/assets/images/email.svg" heigth="20px" width="20px"
-                                                            alt="mail"><span class="pl-2">'.$email.'</span></div>';
+            echo '';
 
     }
 
