@@ -20,7 +20,7 @@ get_header(); ?>
                         while ( have_posts() ) :
                             the_post();?>
                         <div class="row mt-4 flex-column">
-                            <a class="second-text" href="<?php the_permalink() ?>"><h2 class="roboto18lt"><?php the_content(); ?></h2></a>
+                            <a class="second-text" href="<?php the_permalink(); ?>"><h2 class="roboto18lt"><?php the_content(); ?></h2></a>
                             <div class="roboto14md d-flex mt-2">
                                 <p> Дата: <span><?php the_time("d M Y"); ?></span></p>
                                 <p class="ml-4">Автор: <span><?php the_author(); ?></span></p>

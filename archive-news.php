@@ -30,7 +30,7 @@ get_header();
                                             <span class="ml-md-3 ml-0">Автор: <span class="color_cont"><?php the_author(); ?></span></span>
                                         </div>
                                         <p class="roboto16 mt-3">
-                                            <?php the_content(); ?>
+                                            <?php echo carbon_get_post_meta($post->ID, 'el_news_preview'); ?>
                                         </p>
                                     </div>
                                 <?php endwhile;?>

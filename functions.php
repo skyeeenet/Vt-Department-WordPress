@@ -5,6 +5,7 @@ require_once get_template_directory() . '/includes/widget-areas.php';
 require_once get_template_directory() . '/includes/enqueue-script-style.php';
 require_once get_template_directory() . '/includes/post-types.php';
 require_once get_template_directory() . '/includes/filters.php';
+require_once get_template_directory() . '/includes/ajax/schedule.php';
 
 /*Carbon-Fields*/
 add_action( 'after_setup_theme', 'crb_load' );
@@ -19,7 +20,6 @@ function crb_register_custom_fields() {
     require get_template_directory() . '/includes/custom-fields-options/theme-options.php';
 }
 /*Carbon-Fields*/
-
 
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/includes/jetpack.php';

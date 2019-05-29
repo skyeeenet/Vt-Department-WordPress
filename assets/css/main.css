@@ -8,10 +8,7 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee+Inline');
 /* Bungee Inline font */
 
-@font-face {
-  font-family: 'Gotham-Pro-Light';
-  src: url("../../fonts/GothamPro-Light.ttf") format("truetype");
-}
+
 
 * {
   margin: 0;

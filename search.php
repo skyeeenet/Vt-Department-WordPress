@@ -1,54 +1,62 @@
 <?php
-/**
- * The template for displaying search results pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package VTDEPARTMENT
- */
-
 get_header();
 ?>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main">
+    <main>
+        <section>
+            <div class="container">
+                <div class="text-center my-5">
+                    <h1 class="title">Новости</h1>
+                    <div class="d-flex flex-row justify-content-center specDoubledColorLine">
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mx-3 mx-md-0 col-lg-8 col-md-12">
 
-		<?php if ( have_posts() ) : ?>
+                        <?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'vtdep' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</section><!-- #primary -->
+                            <div class="row news-post mb-5">
+                                <?php
+                                while ( have_posts() ) :
+                                    the_post();?>
+                                    <div class="news-post-inner">
+                                        <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php echo get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true); ?>">
+                                        <a href="<?php the_permalink(); ?>">
+                                            <h2 class="link second-title"><?php the_title(); ?></h2>
+                                        </a>
+                                        <div class="d-md-block d-flex flex-column">
+                                            <span class="span-with-line mr-3">Дата: <span class="color_cont"><?php the_time("d M Y"); ?></span></span>
+                                            <span class="ml-md-3 ml-0">Автор: <span class="color_cont"><?php the_author(); ?></span></span>
+                                        </div>
+                                        <p class="roboto16 mt-3">
+                                            <?php echo carbon_get_post_meta($post->ID, 'el_news_preview'); ?>
+                                        </p>
+                                    </div>
+                                <?php endwhile;?>
+                            </div>
+                        <?php endif; ?>
+                        <div class="my-5 pagination">
+                            <?php the_posts_pagination(array(
+                                'prev_text'    => __('<'),
+                                'next_text'    => __('>'),
+                            )); ?>
+                        </div>
+                    </div>
+                    <div
+                            class="col-lg-4 col-md-12 d-flex flex-column align-items-center align-items-lg-start mb-5 mb-lg-0">
+                        <div class="d-none d-lg-block">
+                            <?php get_search_form(); ?>
+                        </div>
+                        <?php if (is_active_sidebar('right_sidebar')) : ?>
+                            <?php dynamic_sidebar('right_sidebar'); ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
 <?php
 get_sidebar();

@@ -1,0 +1,1 @@
+$(function(){$("#schedule_show").on("click",function(e){e.preventDefault(),$.ajax({url:"/wp-admin/admin-ajax.php",type:"POST",data:{action:"get_schedule",group:$("#group").val(),day:$("#day").val(),week:$("#week").val()},success:function(e){$("#schedule-container").empty(),$("#schedule-container").append(e)}})})});

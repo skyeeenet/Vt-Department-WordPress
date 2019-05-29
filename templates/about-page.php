@@ -10,7 +10,7 @@ Template Name: О кафедре
         <div class="container mt-3">
             <div class="d-flex flex-column align-items-center justify-content-center">
                 <div class="text-center">
-                    <h1 class="title"><?php the_field('title'); ?></h1>
+                    <h1 class="title"><?php the_title(); ?></h1>
                     <div class="d-flex flex-row justify-content-center specDoubledColorLine">
                         <div></div>
                         <div></div>
@@ -18,11 +18,11 @@ Template Name: О кафедре
                 </div>
                 <div class="col-12 p-0 roboto18lt col-md-10 mb-2 mt-4">
 
-                    <?php the_field('upper_text'); ?>
+                    <?php echo carbon_get_post_meta($post->ID, 'el_about_upper_text'); ?>
 
                         <?php echo do_shortcode('[metaslider id="93"]'); ?>
 
-                    <?php the_field('content'); ?>
+                    <?php echo carbon_get_post_meta($post->ID, 'el_about_lower_text'); ?>
 
                 </div>
             </div>
@@ -46,10 +46,10 @@ Template Name: О кафедре
                 $loop = new WP_Query($args);
                 while ($loop->have_posts()) : $loop->the_post(); ?>
                 <div class="d-flex flex-column justify-content-center align-items-center mt-2 mb-2 text-center">
-                    <img src="<?php the_post_thumbnail_url(); ?>" alt="spec_logo">
+                    <img src="<?php the_post_thumbnail_url(); ?>" alt="Специальность">
                     <div class="roboto24 mt-4"><?php the_title(); ?></div>
                     <div class="roboto16">
-                        <?php the_field('preview'); ?>
+                        <?php echo carbon_get_post_meta($post->ID, 'el_specialty_preview'); ?>
                     </div>
                     <a href="<?php the_permalink(); ?>">
                         <div class="someBlockButton mt-3">
@@ -71,11 +71,12 @@ Template Name: О кафедре
                 </div>
             </div>
             <div class="offset-1 mt-5">
-                <p class="roboto16"><?php the_field('work_term'); ?></p>
+                <p class="roboto16">График работы <?php echo carbon_get_post_meta($post->ID, 'el_about_terms'); ?></p>
                 <p class="someHeadText">Нормативные документы:</p>
-                <div><a href="<?php the_field('document_1') ?>">Документ 1</a></div>
-                <div><a href="<?php the_field('document_2') ?>">Документ 2</a></div>
-                <div><a href="<?php the_field('document_3') ?>">Документ 3</a></div>
+                <?php $documents = carbon_get_post_meta($post->ID, 'el_about_documents'); ?>
+                <?php foreach ($documents as $item): ?>
+                    <div><a href="<?php echo $item['file']; ?>"><?php echo $item['title']; ?></a></div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -89,7 +90,7 @@ Template Name: О кафедре
                         <div></div>
                     </div>
                 </div>
-                <img class="scaleSomeImage my-5" src="<?php the_field('infographics') ?>" alt="">
+                <img class="scaleSomeImage my-5" src="<?php echo carbon_get_post_meta($post->ID, 'el_about_info'); ?>" alt="Трудостройство учащихся">
             </div>
         </div>
     </section>

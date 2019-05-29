@@ -62,7 +62,7 @@ Template Name: Главная страница
                         <div class="card-body">
                             <small class="roboto14"><?php the_time("d M Y"); ?></small>
                             <h5 class="mt-3"><a class="roboto22md color_cont" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-                            <p class="roboto16lt second-text mt-4">Preview</p>
+                            <p class="roboto16lt second-text mt-4"><?php echo carbon_get_post_meta($post->ID, 'el_news_preview'); ?></p>
                         </div>
                     </div>
                 </div>

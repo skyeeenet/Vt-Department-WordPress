@@ -5,7 +5,7 @@ get_header();
         <section>
             <div class="container">
                 <div class="text-center my-5">
-                    <h1 class="title">Новости</h1>
+                    <h2 class="title">Новости</h2>
                     <div class="d-flex flex-row justify-content-center specDoubledColorLine">
                         <div></div>
                         <div></div>
@@ -24,7 +24,7 @@ get_header();
                                     <div class="news-post-inner">
                                         <img src="<?php the_post_thumbnail_url(); ?>" alt="<?php echo get_post_meta(get_post_thumbnail_id(), '_wp_attachment_image_alt', true); ?>">
 
-                                            <h2 class="second-title"><?php the_field('preview'); ?></h2>
+                                            <h1 class="second-title mt-2"><?php the_title(); ?></h1>
 
                                         <div class="d-md-block d-flex flex-column">
                                             <span class="span-with-line mr-3">Дата: <span class="color_cont"><?php the_time("d M Y"); ?></span></span>

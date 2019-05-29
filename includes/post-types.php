@@ -1,6 +1,5 @@
 <?php
 add_action('init', function() {
-
     register_post_type('adverts', [
         //передаем настройки
         'labels' => [
@@ -20,92 +19,12 @@ add_action('init', function() {
         'description' => '',
         'public' => true,
         'menu_position' => 29,
-        'menu_icon' => 'dashicons-format-quote',
+        'menu_icon' => 'dashicons-format-status',
         'hierarchical' => false,
         'supports' => array('title', 'editor'),
         'taxonomies' => array(),
         'has_archive' => true
     ]);
-
-    register_post_type('info-blocks', [
-        //передаем настройки
-        'labels' => [
-            'name' => 'Инфо-Блоки',
-            'singular_name' => 'Инфо-Блок',
-            'add_new' => 'Добавить',
-            'add_new_item' => 'Добавить Инфо-Блок',
-            'edit_item' => 'Редактировать Инфо-Блок',
-            'new_item' => 'Новое Инфо-Блок',
-            'view_item' => 'Показать Инфо-Блок',
-            'search_items' => 'Найти Инфо-Блок',
-            'not_found' => 'Не найдено',
-            'not_found_in_trash' => 'Not found in trash',
-            'parent_item_colon' => '',
-            'menu_name' => 'Инфо-Блоки',
-        ],
-        'description' => '',
-        'public' => true,
-        'menu_position' => 26,
-        'menu_icon' => 'dashicons-format-quote',
-        'hierarchical' => false,
-        'supports' => array('title', 'editor', 'thumbnail'),
-        'taxonomies' => array(),
-        'has_archive' => false
-    ]);
-
-    register_taxonomy('degree', array('info-blocks'), array(
-        'labels' => array(
-            'name' => 'Degrees',
-            'sungular_name' => 'Degree',
-            'search_items' => 'Search Degree',
-            'all_items' => 'All Degrees',
-            'view_item' => 'View Degree',
-            'edit_item' => 'Edit Degree',
-            'update_item' => 'Update Degree',
-            'add_new_item' => 'Add New Degree',
-            'new_item_name' => 'Add New',
-            'menu_name' => 'Degrees',
-        ),
-        'description' => '',
-        'public' => true,
-        'hierarchical' => true,
-    ));
-
-    register_taxonomy('groups', array('info-blocks'), array(
-        'labels' => array(
-            'name' => 'Groups',
-            'sungular_name' => 'Group',
-            'search_items' => 'Search Group',
-            'all_items' => 'All Groups',
-            'view_item' => 'View Group',
-            'edit_item' => 'Edit Group',
-            'update_item' => 'Update Group',
-            'add_new_item' => 'Add New Group',
-            'new_item_name' => 'Add New',
-            'menu_name' => 'Groups',
-        ),
-        'description' => '',
-        'public' => true,
-        'hierarchical' => true,
-    ));
-
-    register_taxonomy('Type', array('info-blocks'), array(
-        'labels' => array(
-            'name' => 'Types',
-            'sungular_name' => 'Type',
-            'search_items' => 'Search Type',
-            'all_items' => 'All Types',
-            'view_item' => 'View Type',
-            'edit_item' => 'Edit Type',
-            'update_item' => 'Update Type',
-            'add_new_item' => 'Add New Type',
-            'new_item_name' => 'Add New',
-            'menu_name' => 'Types',
-        ),
-        'description' => '',
-        'public' => true,
-        'hierarchical' => true,
-    ));
 
     register_post_type('best-students', [
         //передаем настройки
@@ -126,7 +45,7 @@ add_action('init', function() {
         'description' => '',
         'public' => true,
         'menu_position' => 27,
-        'menu_icon' => 'dashicons-format-quote',
+        'menu_icon' => 'dashicons-star-filled',
         'hierarchical' => false,
         'supports' => array('title', 'editor', 'thumbnail'),
         'taxonomies' => array(),
@@ -152,7 +71,7 @@ add_action('init', function() {
         'description' => '',
         'public' => true,
         'menu_position' => 28,
-        'menu_icon' => 'dashicons-format-quote',
+        'menu_icon' => 'dashicons-admin-site-alt3',
         'hierarchical' => false,
         'supports' => array('title', 'editor', 'thumbnail'),
         'taxonomies' => array(),
@@ -178,10 +97,250 @@ add_action('init', function() {
         'description' => '',
         'public' => true,
         'menu_position' => 30,
-        'menu_icon' => 'dashicons-format-quote',
+        'menu_icon' => 'dashicons-admin-tools',
         'hierarchical' => false,
         'supports' => array('title', 'editor', 'thumbnail'),
         'taxonomies' => array(),
         'has_archive' => true
     ]);
+
+    register_post_type('album', [
+        //передаем настройки
+        'labels' => [
+            'name' => 'Альбом',
+            'singular_name' => 'Альбом',
+            'add_new' => 'Добавить',
+            'add_new_item' => 'Добавить Альбом',
+            'edit_item' => 'Редактировать Альбом',
+            'new_item' => 'Новый Альбом',
+            'view_item' => 'Показать Альбом',
+            'search_items' => 'Найти Альбом',
+            'not_found' => 'Не найдено',
+            'not_found_in_trash' => 'Not found in trash',
+            'parent_item_colon' => '',
+            'menu_name' => 'Альбом',
+        ],
+        'description' => '',
+        'public' => true,
+        'menu_position' => 31,
+        'menu_icon' => 'dashicons-images-alt2',
+        'hierarchical' => false,
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'taxonomies' => array(),
+        'has_archive' => true
+    ]);
+
+    register_taxonomy('tags', array('album'), array(
+        'labels' => array(
+            'name' => 'Теги',
+            'sungular_name' => 'Тег',
+            'search_items' => 'Найти Тег',
+            'all_items' => 'Все Теги',
+            'view_item' => 'Просмотреть Тег',
+            'edit_item' => 'Редактировать Тег',
+            'update_item' => 'Обновить Тег',
+            'add_new_item' => 'Добавить Новый Тег',
+            'new_item_name' => 'Добавить Новый',
+            'menu_name' => 'Теги',
+        ),
+        'description' => '',
+        'public' => true,
+        'hierarchical' => true,
+    ));
+
+    register_post_type('team', [
+        //передаем настройки
+        'labels' => [
+            'name' => 'Коллектив',
+            'singular_name' => 'Коллектив',
+            'add_new' => 'Добавить',
+            'add_new_item' => 'Добавить Коллектив',
+            'edit_item' => 'Редактировать Коллектив',
+            'new_item' => 'Новый Коллектив',
+            'view_item' => 'Показать Коллектив',
+            'search_items' => 'Найти Коллектив',
+            'not_found' => 'Не найдено',
+            'not_found_in_trash' => 'Not found in trash',
+            'parent_item_colon' => '',
+            'menu_name' => 'Коллектив',
+        ],
+        'description' => '',
+        'public' => true,
+        'menu_position' => 31,
+        'menu_icon' => 'dashicons-businessperson',
+        'hierarchical' => false,
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'taxonomies' => array(),
+        'has_archive' => false
+    ]);
+
+    register_taxonomy('categories', array('team'), array(
+        'labels' => array(
+            'name' => 'Теги',
+            'sungular_name' => 'Тег',
+            'search_items' => 'Найти Тег',
+            'all_items' => 'Все Теги',
+            'view_item' => 'Просмотреть Тег',
+            'edit_item' => 'Редактировать Тег',
+            'update_item' => 'Обновить Тег',
+            'add_new_item' => 'Добавить Новый Тег',
+            'new_item_name' => 'Добавить Новый',
+            'menu_name' => 'Теги',
+        ),
+        'description' => '',
+        'public' => true,
+        'hierarchical' => true,
+    ));
+
+    register_post_type('schedule', [
+        //передаем настройки
+        'labels' => [
+            'name' => 'Расписание',
+            'singular_name' => 'Расписание',
+            'add_new' => 'Добавить',
+            'add_new_item' => 'Добавить Расписание',
+            'edit_item' => 'Редактировать Расписание',
+            'new_item' => 'Новое Расписание',
+            'view_item' => 'Показать Расписание',
+            'search_items' => 'Найти Расписание',
+            'not_found' => 'Не найдено',
+            'not_found_in_trash' => 'Not found in trash',
+            'parent_item_colon' => '',
+            'menu_name' => 'Расписание',
+        ],
+        'description' => '',
+        'public' => true,
+        'menu_position' => 32,
+        'menu_icon' => 'dashicons-schedule',
+        'hierarchical' => false,
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'taxonomies' => array(),
+        'has_archive' => false
+    ]);
+
+    register_taxonomy('group', array('schedule'), array(
+        'labels' => array(
+            'name' => 'Группы',
+            'sungular_name' => 'Группа',
+            'search_items' => 'Найти Группу',
+            'all_items' => 'Все Группы',
+            'view_item' => 'Просмотреть Группу',
+            'edit_item' => 'Редактировать Группу',
+            'update_item' => 'Обновить Группу',
+            'add_new_item' => 'Добавить Новую Группу',
+            'new_item_name' => 'Добавить Новый',
+            'menu_name' => 'Группы',
+        ),
+        'description' => '',
+        'public' => true,
+        'hierarchical' => true,
+    ));
+
+    register_taxonomy('pair-type', array('schedule'), array(
+        'labels' => array(
+            'name' => 'Тип пары',
+            'sungular_name' => 'Тип Пары',
+            'search_items' => 'Найти Тип Пары',
+            'all_items' => 'Все Типы Пар',
+            'view_item' => 'Просмотреть Пип Пары',
+            'edit_item' => 'Редактировать Тип Пары',
+            'update_item' => 'Обновить Группу',
+            'add_new_item' => 'Добавить Новый Тип',
+            'new_item_name' => 'Добавить Новый',
+            'menu_name' => 'Тип Пары',
+        ),
+        'description' => '',
+        'public' => true,
+        'hierarchical' => true,
+    ));
+
+    register_taxonomy('subject', array('schedule'), array(
+        'labels' => array(
+            'name' => 'Предметы',
+            'sungular_name' => 'Предмет',
+            'search_items' => 'Найти Предмет',
+            'all_items' => 'Все Предметр',
+            'view_item' => 'Просмотреть Предмет',
+            'edit_item' => 'Редактировать Предмет',
+            'update_item' => 'Обновить Предмет',
+            'add_new_item' => 'Добавить Новый Предмет',
+            'new_item_name' => 'Добавить Новый',
+            'menu_name' => 'Предметы',
+        ),
+        'description' => '',
+        'public' => true,
+        'hierarchical' => true,
+    ));
+
+    register_taxonomy('teacher', array('schedule'), array(
+        'labels' => array(
+            'name' => 'Преподаватели',
+            'sungular_name' => 'Преподаватель',
+            'search_items' => 'Найти Преподавателя',
+            'all_items' => 'Все Преподаватели',
+            'view_item' => 'Просмотреть Преподавателя',
+            'edit_item' => 'Редактировать Преподавателя',
+            'update_item' => 'Обновить Преподавателя',
+            'add_new_item' => 'Добавить Нового Преподавателя',
+            'new_item_name' => 'Добавить Новый',
+            'menu_name' => 'Преподаватели',
+        ),
+        'description' => '',
+        'public' => true,
+        'hierarchical' => true,
+    ));
+
+    register_taxonomy('number', array('schedule'), array(
+        'labels' => array(
+            'name' => 'Номера пар',
+            'sungular_name' => 'Номер пары',
+            'search_items' => 'Найти Номер пары',
+            'all_items' => 'Все Номера пар',
+            'view_item' => 'Просмотреть Номер пары',
+            'edit_item' => 'Редактировать Номер пары',
+            'update_item' => 'Обновить Номер пары',
+            'add_new_item' => 'Добавить Номер пары',
+            'new_item_name' => 'Добавить Новый',
+            'menu_name' => 'Номера пар',
+        ),
+        'description' => '',
+        'public' => true,
+        'hierarchical' => true,
+    ));
+
+    register_taxonomy('week', array('schedule'), array(
+        'labels' => array(
+            'name' => 'Неделя',
+            'sungular_name' => 'Неделя',
+            'search_items' => 'Найти Неделю',
+            'all_items' => 'Все Недели',
+            'view_item' => 'Просмотреть Неделю',
+            'edit_item' => 'Редактировать Неделю',
+            'update_item' => 'Обновить Неделю',
+            'add_new_item' => 'Добавить Неделю',
+            'new_item_name' => 'Добавить Новый',
+            'menu_name' => 'Недели',
+        ),
+        'description' => '',
+        'public' => true,
+        'hierarchical' => true,
+    ));
+
+    register_taxonomy('day', array('schedule'), array(
+        'labels' => array(
+            'name' => 'День',
+            'sungular_name' => 'День',
+            'search_items' => 'Найти НДень',
+            'all_items' => 'Все Дни',
+            'view_item' => 'Просмотреть День',
+            'edit_item' => 'Редактировать День',
+            'update_item' => 'Обновить День',
+            'add_new_item' => 'Добавить День',
+            'new_item_name' => 'Добавить Новый',
+            'menu_name' => 'День',
+        ),
+        'description' => '',
+        'public' => true,
+        'hierarchical' => true,
+    ));
 });

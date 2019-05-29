@@ -1,13 +1,11 @@
 <?php
 get_header(); ?>
-
-
     <main>
         <section>
             <div class="container">
                 <?php if ( have_posts() ) : ?>
                     <div class="text-center my-5">
-                        <h1 class="title"><?php if(the_field('h1') != "") the_field('h1'); else the_title();  ?></h1>
+                        <h1 class="title">Объявления</h1>
                         <div class="d-flex flex-row justify-content-center specDoubledColorLine">
                             <div></div>
                             <div></div>

@@ -1,53 +1,46 @@
-<?php
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package VTDEPARTMENT
- */
+<?php get_header(); ?>
 
-get_header();
-?>
+<main>
+    <div class="container-fluid">
+        <div class="text-center my-5">
+            <h1 class="title">Альбом</h1>
+            <div class="d-flex flex-row justify-content-center specDoubledColorLine">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-12 row no-gutters">
+                <?php if ( have_posts() ) : ?>
+                    <?php
+                    while ( have_posts() ) :
+                        the_post();?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+                        <a class="col-lg-4 col-md-6 d-flex justify-content-center" data-fancybox="gallery" href="<?php echo carbon_get_post_meta($post->ID, 'el_album_image'); ?>">
+                            <div style="background-image: url('<?php the_post_thumbnail_url(); ?>');"
+                                 class="card-gallery-container">
+                            </div>
+                        </a>
+                    <?php endwhile;?>
+                <?php endif; ?>
+            </div>
+            <aside class="d-flex flex-column col-lg-2 justify-content-start align-items-center align-items-xl-start mb-2 mb-lg-0">
+                <div class="mt-2 mb-2 alboomCategory recent-posts">
+                    <h3>Категории</h3>
+                    <?php $terms = get_terms([
+                        'taxonomy' => 'tags',
+                        'hide_empty' => true,
+                        'orderby'       => 'id',
+                        'order'         => 'ASC',
+                        'get'           => '',
+                    ]) ?>
+                    <?php foreach($terms as $term): ?>
+                        <a href="<?php echo get_term_link($term->term_id, 'tags'); ?>"><?php echo $term->name; ?></a>
+                    <?php endforeach; ?>
+                </div>
+            </aside>
+        </div>
+    </div>
+</main>
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer(); ?>

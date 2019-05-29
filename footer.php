@@ -9,7 +9,7 @@
                 <div class="col-lg-4 d-flex justify-content-center">
                     <div class="nav w-100 flex-column align-items-center">
                         <p class="vit_foot_main_text p-0">Разработчики</p>
-                        <a href="https://www.linkedin.com/in/sergei-tilinin-b4289417b">Тилинин Сергей</a>
+                        <a href="https://www.facebook.com/sergei.tilinin">Тилинин Сергей</a>
                         <a href="">Клычков Виталий</a>
                         <a href="">Симон Николай</a>
                         <a href="">Крутиков Владислав</a>
@@ -22,7 +22,7 @@
                         <p class="vit_foot_main_text text-center">Контакты</p>
                         <div class="mt-md-0 mt-md-0 "><img src="<?php echo get_template_directory_uri().'/assets/images/placeholder.svg'; ?>" height="20px" width="20px" alt="City"><span class="pl-2 color_cont"><?php echo carbon_get_theme_option('el_address') ?></span></div>
                         <div class="pt-2 mt-md-0"><img src="<?php echo get_template_directory_uri().'/assets/images/email.svg'; ?>" height="20px" width="20px" alt="Mail"><span class="pl-2 color_cont"><?php echo carbon_get_theme_option('el_email') ?></span></div>
-                        <div class="mt-md-0 mt-md-0 pt-2"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/support.svg" height="20px" width="20px" alt="Support"><a href=""><span class="pl-2 color_cont">Обратная связь</span></a></div>
+                        <div class="mt-md-0 mt-md-0 pt-2"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/support.svg" height="20px" width="20px" alt="Support"><button class="no-btn" type="button" data-toggle="modal" data-target="#exampleModal"><span class="pl-2 color_cont">Обратная связь</span></button></div>
                     </div>
                 </div>
                 <div class="col-lg-4 mt-3 mt-lg-0 d-flex justify-content-center">
@@ -39,6 +39,22 @@
 </footer>
 </div>
 
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Обратная связь</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <?php echo do_shortcode('[contact-form-7 id="182" title="Обратная связь"]'); ?>
+            </div>
+        </div>
+    </div>
 </div>
 <?php wp_footer(); ?>
 </body>
